@@ -1,0 +1,12 @@
+{
+  "name": "langnang/toolkit",
+  "authors": [
+    {
+      "name": "langnang",
+      "email": "langnang.chen@outlook.com"
+    }
+  ],
+  "require": {
+    "twig/twig": "^3.5"
+  }
+}
