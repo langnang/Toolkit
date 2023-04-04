@@ -77,6 +77,8 @@ Route::get('/', function () {
           ]
         ],
       ],
+      ["name" => "Editor"],
+      ["name" => "Converter"],
       [
         "name" => "Spider",
         "contents" => [
