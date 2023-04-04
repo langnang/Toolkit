@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Toolkit</a>
+          <a class="navbar-brand" href="/">Toolkit</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,38 +75,63 @@
       </div><!-- /.container-fluid -->
     </header>
   @show
-  @section('content')
-    <main>
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Crypto</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-4 col-md-3" style="padding: 0 5px;">
-                <a class="thumbnail" style="margin-bottom: 10px;" href="/crypto/md5">
-                  <div class="caption">
-                    <h4>MD5加密</h4>
-                  </div>
-                </a>
+  <main>
+    <div class="container">
+      @section('content')
+        @isset($contents)
+          @foreach ($contents as $panel)
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ $panel['name'] }}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  @foreach ($panel['contents'] as $content)
+                    <div class="col-sm-4 col-md-3" style="padding: 0 5px;">
+                      <a class="thumbnail" style="margin-bottom: 10px;"
+                        @isset($content['slug'])
+                       href="/{{ str_replace('_', '/', $content['slug']) }}"
+                    @endisset>
+                        <div class="caption">
+                          <h4>{{ $content['title'] }}</h4>
+                        </div>
+                      </a>
+                    </div>
+                  @endforeach
+
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
+          @endforeach
+        @endisset
+      @show
+      @isset($links)
         <div class="panel panel-default">
           <div class="panel-heading">友情链接</div>
           <div class="panel-body">
             <ul class="list-inline">
-              <li> <a target="_blank" href="https://www.julinghu.com/">牛站工具网</a> </li>
-              <li> <a target="_blank" href="https://tools.kui.li/">奎箱 - 小工具聚集地</a> </li>
+              @foreach ($links as $link)
+                <li> <a target="_blank" href="{{ $link['url'] }}">{{ $link['title'] }}</a> </li>
+              @endforeach
             </ul>
           </div>
         </div>
       </div>
-    </main>
-  @show
+    @endisset
+    @isset($refs)
+      <div class="panel panel-default">
+        <div class="panel-heading">参考文献</div>
+        <div class="panel-body">
+          <ul class="list-inline">
+            @foreach ($refs as $link)
+              <li> <a target="_blank" href="{{ $link['url'] }}">{{ $link['title'] }}</a> </li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+      </div>
+    @endisset
+  </main>
   @section('footer')
     <footer>
 
