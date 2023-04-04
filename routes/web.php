@@ -18,11 +18,56 @@ Route::get('/', function () {
     "contents" => [
       [
         "name" => "crypto",
-        "contents" => [
-          [
-            "title" => "MD5加密",
-          ]
-        ],
+        "contents" => array_map(function ($item) {
+          return ["title" => $item];
+        }, [
+          "md5",
+          "sha1",
+          "sha256",
+          "sha224",
+          "sha512",
+          "sha384",
+          "sha3",
+          "ripemd160",
+          "hmac-md5",
+          "hmac-sha1",
+          "hmac-sha256",
+          "hmac-sha224",
+          "hmac-sha512",
+          "hmac-sha384",
+          "hmac-sha3",
+          "hmac-ripemd160",
+          "pbkdf2",
+
+          "aes",
+          "tripledes",
+          "rc4",
+          "rabbit",
+          "rabbit-legacy",
+          "evpkdf",
+
+          "format-openssl",
+          "format-hex",
+
+          "enc-latin1",
+          "enc-utf8",
+          "enc-hex",
+          "enc-utf16",
+          "enc-base64",
+
+          "mode-cfb",
+          "mode-ctr",
+          "mode-ctr-gladman",
+          "mode-ofb",
+          "mode-ecb",
+
+          "pad-pkcs7",
+          "pad-ansix923",
+          "pad-iso10126",
+          "pad-iso97971",
+          "pad-zeropadding",
+          "pad-nopadding",
+        ],),
       ],
       [
         "name" => "Random",
@@ -40,11 +85,21 @@ Route::get('/', function () {
             "title" => "SiteInfo",
           ]
         ],
+      ],
+      [
+        "name" => "Other",
+        "contents" => [
+          [
+            "slug" => "other_progress",
+            "title" => "Progress",
+          ]
+        ],
       ]
     ],
     "links" => [
       ["url" => "https://www.julinghu.com/", "title" => "牛站工具网",],
       ["url" => "https://tools.kui.li/", "title" => "奎箱 - 小工具聚集地",],
+      ['url' => 'https://cryptojs.gitbook.io/docs/', "title" => "CryptoJS",],
     ],
   ]);
 });
